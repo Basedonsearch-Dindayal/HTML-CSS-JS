@@ -1,0 +1,53 @@
+#outer{
+    width: 250px;
+    height: 250px;
+    background-color:orange;
+    border: 2px solid rgb(240, 123, 21);
+    border-radius: 50%;
+    margin:auto;
+    box-shadow: 3px 3px 8px black;
+}
+#eye1{
+    width: 40px;
+    height: 40px;
+    background-color: black;
+    border-radius: 50%;
+    position: relative;
+    top: 70px;
+    left: 50px;
+    display: inline-block;
+    box-shadow: 1.5px 1.5px 4px yellow;
+}
+#eye2{
+    width: 40px;
+    height: 40px;
+    background-color: black;
+    border-radius: 50%;
+    position: relative;
+    top: 70px;
+    left: 110px;
+    display: inline-block;
+    box-shadow: 1.5px 1.5px 4px yellow;
+}
+#mouth{
+    height: 50px;
+    width: 110px;
+    background-color:rgba(201, 41, 41, 0.733);
+    position: relative;
+    top: 120px;
+    left: 70px;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+   
+}
+#mouth:hover{
+    transform: rotate(180deg);
+    box-shadow: 2.5px 2.5px 6px red;
+
+}
+H1{
+    text-align: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    box-shadow: 1px 1px 4px green;
+    text-shadow: 1px 1px 4px yellow;
+}

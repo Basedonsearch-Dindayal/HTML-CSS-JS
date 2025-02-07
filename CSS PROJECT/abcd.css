@@ -1,0 +1,36 @@
+.alpha div{
+    font-size: 130px;
+    border: 2px solid #F29727;
+    border-radius: 15px;
+    height: 150px;
+    width: 150px;
+    text-align: center;
+    margin: 5px;
+    padding: 10px;
+    background-color: #22A699;
+    color: #F24C3D;
+    font-family: 'Cute', sans-serif;
+    font-family: 'Spring', sans-serif;
+}
+
+.alpha{
+    border:2px solid #22A699;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #F2BE22;
+}
+
+.alpha div:hover{
+    color: #f23d3d;
+    background-color: #2278a6;
+    box-shadow: 4px 4px 10px black;
+    text-shadow: 4px 4px 8px black;
+}
+
+#A,#E,#I,#O,#U {
+    background-color: rebeccapurple;
+}
+
+#A,#E,#I,#O,#U:hover{
+    background-color: rgb(105, 26, 183);
+}

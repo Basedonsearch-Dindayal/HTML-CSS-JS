@@ -1,0 +1,26 @@
+#outer{
+    height: 400px;
+    width: 400px;
+    border:3px solid red;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap:wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: darkgray;
+}
+#outer div{
+    height: 100px;
+    width: 100px;
+    border:3px solid black;
+    border-radius: 20px;
+    font-size: 50px;
+    background-color: greenyellow;
+    text-align: center;
+}
+#outer div:hover{
+    background-color: chocolate;
+    color: aqua;
+
+}

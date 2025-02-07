@@ -1,0 +1,17 @@
+*{
+    font-family: Courier 'Courier New', Courier, monospace;
+    text-align: center;
+    background-color: aliceblue;
+}
+h1{
+    color: #1b74e4;
+    text-shadow: #1b74e4;
+    
+}
+#searchbtn{
+    color: white;
+    background-color: black;
+}
+.userbtn{
+    background-color: aqua;
+}

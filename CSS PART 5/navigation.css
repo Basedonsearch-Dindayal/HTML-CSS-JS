@@ -1,0 +1,28 @@
+#outer{
+    display: flex;
+    border: 2px solid aqua;
+    border-radius: 10px;
+    background-color: pink;
+    height: 50px;
+    width: 900px;
+    justify-content: flex-start;
+    align-content: center;
+
+
+}
+.navi{
+    height: 50px;
+    width: 80px;
+    font-size: 24px;
+    border-radius: 10px;
+    margin-left: 15px;
+    line-height: 50px;
+}
+#logo{
+    height: 45px;
+    width: 45px;
+    border-radius: 50%;
+    background-image: url("LOGO.avif");
+    background-size:  cover
+    
+}

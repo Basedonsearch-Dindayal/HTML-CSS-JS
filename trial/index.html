@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modal Design</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+  }
+  .updatemodal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  .formmodal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 60%;
+    height: 40%;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  }
+  .formclose {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  .formclose:hover,
+  .formclose:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .formmodal-content form {
+    display: flex;
+    flex-direction: column;
+  }
+  .formmodal-content form div {
+    margin-bottom: 15px;
+  }
+  .formmodal-content form label {
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  .formmodal-content form input,
+  .formmodal-content form select {
+    padding: 10px;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .submit_button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 15px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+  }
+  .submit_button:hover {
+    background-color: #45a049;
+  }
+</style>
+</head>
+<body>
+
+<div id="{{item[0]}}" class="updatemodal">
+  <div class="formmodal-content">
+    <span class="formclose" onclick="closeModal('{{item[0]}}')">&times;</span>
+    Update {{item[0]}}
+    <form method="POST" class="register-form" id="update-form" action="/updatestaff/{{username}}/{{item[0]}}" enctype="multipart/form-data">
+      <div>
+        <label for="staff_name">Name</label>
+        <input type="text" name="staff_name" id="staff_name" placeholder="staff name" value='{{item[1]}}' required />
+      </div>
+      <div>
+        <label for="email">E-mail</label>
+        <input type="email" name="email" id="email" placeholder="abc@pqr.com" value='{{item[3]}}' required />
+      </div>
+      <div>
+        <label for="phone">Phone No.</label>
+        <input type="tel" name="phone" id="phone" placeholder="1234567890" pattern="[0-9]{10}" value='{{item[4]}}' required />
+      </div>
+      <div>
+        <label for="image">IMAGE</label>
+        <input type="file" name="image" id="image" accept="image/*">
+        <span style="font-weight: bold; font-size: 20px; color: red;">old file: {{item[12]}}</span>
+      </div>
+      <div>
+        <label for="gen">Gender</label>
+        <select name="gen" id="gen" required>
+          {% for option in gender %}
+            <option value="{{ option }}" {% if option == item[6] %}selected{% endif %}>{{ option }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div>
+        <label for="dob">DOB</label>
+        <input type="date" name="dob" id="dob" value='{{item[7]}}' required />
+      </div>
+      <div>
+        <label for="branch">Branch</label>
+        <input type="text" name="branch" id="branch" placeholder="branch name" value='{{item[9]}}' required />
+      </div>
+      <div>
+        <label for="desig">Designation</label>
+        <input type="text" name="desig" id="desig" placeholder="Designation" value='{{item[10]}}' required />
+      </div>
+      <div>
+        <label for="add">Address</label>
+        <input type="text" name="add" id="add" placeholder="Address" value='{{item[13]}}' required />
+      </div>
+      <div>
+        <label for="sec">Retired/Suspended/working</label>
+        <select name="sec" id="sec" required>
+          {% for option in retiredstatus %}
+            <option value="{{ option }}" {% if option == item[11] %}selected{% endif %}>{{ option }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div>
+        <input class="submit_button" type="submit" value="Update" />
+      </div>
+    </form>
+  </div>
+</div>
+
+
+</body>
+</html>

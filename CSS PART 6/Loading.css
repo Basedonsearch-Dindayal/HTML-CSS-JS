@@ -1,0 +1,26 @@
+.out{
+    height: 200px;
+    width: 200px;
+    border: 16px solid #f3f3f3;
+    border-top: 16px solid goldenrod;
+    border-bottom: 16px solid green;
+    border-left: 16px solid royalblue;
+    border-right: 16px solid red;
+    border-radius: 50%;
+    animation: spin 0.5s linear infinite;
+    display: inline-flex;
+    flex-wrap: wrap;
+    background-image: url("smile.png");
+    background-size: cover;
+}
+@keyframes spin{
+    0%{ transform: rotate(0deg);}
+    100%{ transform: rotate(360deg);}
+}
+body{
+    background-color: aqua;
+}
+.out:hover{
+    animation:normal;
+    box-shadow: 10px 1opx 50px yellow;
+}

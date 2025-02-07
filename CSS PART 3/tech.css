@@ -1,0 +1,19 @@
+li{
+    display: inline-block;
+    border: 3px dotted green;
+    font-size: larger;
+    color: red;
+    padding: 2px;
+    text-align: center;
+    }
+li:hover{
+    color: white;
+    background-color: black;
+    border-color: yellow;
+}
+li:active{
+    border-color: none;
+}
+body{
+    background-color:aquamarine;
+}

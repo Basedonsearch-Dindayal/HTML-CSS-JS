@@ -1,0 +1,70 @@
+
+h2{
+    color: orange;
+    text-align: center;
+    background-color: white;
+    border: 2px double ;
+}
+
+h1 span {
+    color: brown;
+}
+h1{
+    text-align: center;
+    text-decoration: underline green;
+    background-color: white;
+}
+
+.card{
+    width: 400px;
+    border: 2px solid black;
+    border-radius: 15px;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+    background-color: white;
+    justify-content: space-around;
+
+}
+.card:hover{
+    border: 5px solid orangered;
+    box-shadow: 4px 4px 70px yellow;
+
+
+}
+
+img{
+    width: 150px;
+    height: 150px;
+    border: 25px dotted greenyellow;
+    border-radius: 25px;
+    transition: border 0.5s;
+}
+
+h3{
+    color: orangered;
+    text-decoration: underline;
+    font-weight: bolder;
+    font-size: larger;
+}
+
+p{
+    text-decoration: black;
+    font-weight: bolder;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+#pets{
+    display:flex;
+    justify-content:space-evenly;
+    flex: wrap;
+    flex-direction: row;
+}
+
+body{
+    background-color: aqua;
+}
+@media(max-width:1050px){
+    #pets{
+        flex-wrap: wrap;
+    }
+}

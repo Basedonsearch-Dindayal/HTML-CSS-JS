@@ -1,0 +1,16 @@
+body{
+    text-align: center;
+    background-color: rgb(234, 234, 61);
+}
+div{
+    height: 100px;
+    width: 60%;
+    border: 1px solid black;
+    margin: auto;
+    text-align: center;
+    justify-content: center;
+}
+button{
+    height: 40px;
+    width: 150px;
+}

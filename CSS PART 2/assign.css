@@ -1,0 +1,36 @@
+#mainTopic{
+    color:red;
+    background-color: aqua;
+    text-size-adjust: 50%;
+}
+*:hover{
+    text-align: center;
+}
+h{
+    font-style: Georgia;
+}
+.para{
+    color: white;
+    background-color: cornflowerblue;
+}
+div button{
+    background-color: purple;
+    color: azure;
+}
+button:hover{
+    background-color: yellow;
+    color: blue;
+}
+p:nth-of-type(2n+1){
+    color: yellow;
+}
+h1{
+    color: red;
+}
+#yes:checked + label 
+{
+    color:red;
+    text-decoration: line-through;
+}
+*:hover{ background-color:yellowgreen;
+    color: blue;}

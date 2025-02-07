@@ -1,0 +1,95 @@
+/* Reset default styles for better consistency */
+body, h1, h2, p, button {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    text-shadow: 4px 4px 10px greenyellow;
+    padding: 40px;
+    text-align: center;
+    line-height: 0.3;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}
+
+header h5{
+    text-decoration:underline;
+    line-height: 1;
+    text-shadow: none;
+}
+main {
+    padding: 20px;
+}
+
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.product {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+    border-radius: 15px;
+}
+.product:hover{
+    box-shadow: 2px 4px black;
+    
+}
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+}
+
+button{
+    box-shadow: 2px 2px 4px black;
+    height: 25px;
+    width: 100px;
+    border-radius: 15px;
+}
+a{
+    color: black;
+    text-decoration: none;
+}
+button:hover{
+    background-color: greenyellow;
+    color: white;
+}
+#s1:hover{
+    color: blue;
+    transform: scale(2);
+    opacity: 1;
+}
+#s2:hover{
+    color: skyblue;
+    transform: scale(2);
+    opacity: 1;
+}
+#s3:hover{
+    color: palevioletred;
+    transform: scale(2);
+    opacity: 1;
+}
+#s4:hover{
+    color: red;
+    transform: scale(2);
+    opacity: 1;
+}
+
+.social_media{
+    text-align: center;
+    position: relative;
+    top: 15px;
+    font-size: larger;
+    margin: 50px;
+}

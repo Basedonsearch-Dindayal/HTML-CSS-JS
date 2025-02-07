@@ -1,0 +1,50 @@
+#box1 {
+    width: 100px;
+    height: 100px;
+    background: green;
+  }
+  
+  #box1:hover {
+    width: 600px;
+    transition: 2s ease-in 0.5s;
+  }
+
+  #box2 {
+    width: 100px;
+    height: 100px;
+    background: red;
+    transform: translate(200px 200px);
+    transform: rotate(90deg);
+  }
+
+  #box3 {
+    width: 100px;
+    height: 100px;
+    background: lightblue;
+    transform: skewX(20deg)
+  }
+
+  #box4 {
+    width: 100px;
+    height: 100px;
+    background: lightgreen;
+    box-shadow: 2px 2px 5px green;
+  }
+
+  #myPic {
+    width: 200px;
+    height: 200px;
+    background: pink;
+    opacity: 50%;
+    background-image: url("mypic.png");
+    background-size: cover;
+    text-align: center;
+}
+*{
+    margin: 40px auto;
+}
+*:hover{
+    background-color: yellowgreen;
+    color: red;
+    box-shadow: 6px 6px 10px blue;
+}

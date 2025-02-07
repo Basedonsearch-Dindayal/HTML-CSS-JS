@@ -1,0 +1,3 @@
+show highest score
+show no. of times played
+popup dialog to reset game(at the end of the game/wrong entry)

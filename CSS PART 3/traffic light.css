@@ -1,0 +1,37 @@
+#outer{
+    height: 200px;
+    width: 70px;
+    border: 2px solid black;
+    background-color:antiquewhite;
+    text-align: center;
+}
+.inner{
+    height: 50px;
+    width: 50px;
+    border: 2px solid black;
+    margin: 10px;
+    border-radius: 50%;
+    text-align:center;
+    line-height: 50px;
+}
+#in1{
+    background-color: red;
+    color: red;
+}
+#in1:hover{
+    color:black
+}
+#in2{
+    background-color:yellow;
+    color: yellow;
+}
+#in2:hover{
+    color:black
+}
+#in3{
+    background-color: green;
+    color: green;
+}
+#in3:hover{
+    color:black
+}
