@@ -1,0 +1,29 @@
+.chat{
+    height: 150px;
+    width: 280px;
+    background-color: rgb(180, 180, 231);
+    padding: 20px;
+    border-radius: 16px;
+    display: inline-block;
+    margin: 21px;
+}
+
+.msg{
+    background-color: dodgerblue;
+    color: white;
+    padding: 5px;
+    border-radius: 16px;
+}
+body {
+    margin-left: 20px;
+    background-image: url("emoji.jpg");
+    background-color: rgba(50, 50, 50, 0.5); /* Adjust the last value (0.5) for transparency */
+    background-blend-mode: overlay; /* Optional: blends the background color with the image */
+}
+
+h1{
+    background-color: brown;
+    text-align: center;
+    padding: 20px;
+    color: aqua;
+}

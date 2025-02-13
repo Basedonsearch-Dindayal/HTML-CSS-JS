@@ -5,15 +5,22 @@ const Chat = require("./models/chat.js");
 async function main() {
     try {
         await mongoose.connect('mongodb://127.0.0.1:27017/Whatsapp', {
-            useNewUrlParser: true,
-            useUnifiedTopology: true
         });
         console.log("MongoDB connection successful");
     } catch (err) {
         console.error("MongoDB connection error:", err);
     }
 }
-main();
+
+main().then(() => {
+    insertChats().catch(err => {
+        console.error("Error inserting chats:", err);
+        mongoose.connection.close();
+    });
+}).catch(err => {
+    console.error("MongoDB connection error:", err);
+    process.exit(1);
+});
 
 let allChats = [
     {
@@ -57,6 +64,3 @@ async function insertChats() {
         console.error("Error inserting chats:", err);
     }
 }
-
-// Call the function after connecting
-insertChats();

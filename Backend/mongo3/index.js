@@ -6,28 +6,33 @@ const Chat = require("./models/chat.js");
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
+app.use(express.static(path.join(__dirname,"public")));
 
 // MongoDB Connection
 async function main() {
     try {
-        await mongoose.connect('mongodb://127.0.0.1:27017/Whatsapp', {
-            useNewUrlParser: true,
-            useUnifiedTopology: true
-        });
+        await mongoose.connect('mongodb://127.0.0.1:27017/Whatsapp');
         console.log("MongoDB connection successful");
     } catch (err) {
         console.error("MongoDB connection error:", err);
     }
 }
 
+main().catch(err => console.error("MongoDB connection error:", err));
+
 // Roots Routes
 app.get("/", (req, res) => {
     res.send("Root is working");
 });
+
 app.get("/chats", async (req, res) => {
-    let chats = Chat.find();
-    console.log(chats)
-    res.send("working");
+    try {
+        let chats = await Chat.find({});  // Await the query execution
+        res.render("index.ejs",{chats});  // Send the chats as a response
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Internal Server Error");
+    }
 });
 
 // Start Server
