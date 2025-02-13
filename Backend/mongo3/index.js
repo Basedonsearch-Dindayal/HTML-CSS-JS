@@ -25,6 +25,7 @@ app.get("/", (req, res) => {
     res.send("Root is working");
 });
 
+//Index roots
 app.get("/chats", async (req, res) => {
     try {
         let chats = await Chat.find({});  // Await the query execution
@@ -33,6 +34,11 @@ app.get("/chats", async (req, res) => {
         console.error(error);
         res.status(500).send("Internal Server Error");
     }
+});
+
+//new chat root
+app.get("/chats/new", (req, res) => {
+    res.send("Root is working");
 });
 
 // Start Server
