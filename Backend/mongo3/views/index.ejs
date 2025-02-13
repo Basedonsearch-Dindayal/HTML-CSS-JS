@@ -8,9 +8,7 @@
 </head>
 <body>
     <h1>All chats</h1>
-    <form method="GET" action="/chats/new">
-        <button class="newchat"><b>New chat</b></button>
-    </form>
+    <a href="/chats/new" class="newchat"><b>New Chat</b></a>
     <br/>
     <% for(let chat of chats){ %>
         <div class="chat">

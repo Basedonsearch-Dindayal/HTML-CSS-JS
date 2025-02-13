@@ -3,23 +3,20 @@ const mongoose = require("mongoose");
 const chatSchema = new mongoose.Schema({
     from: {
         type: String,
-        required: true
+        required: true,
     },
     to: {
         type: String,
-        required: true
+        required: true,
     },
     msg: {
         type: String,
-        maxLength: 200  // Increased max length
+        required: true,
     },
     created_at: {
         type: Date,
-        required: true,
-        default: Date.now
-    }
+        default: Date.now,
+    },
 });
 
-const Chat = mongoose.model("Chat", chatSchema);
-
-module.exports = Chat;
+module.exports = mongoose.model("Chat", chatSchema);

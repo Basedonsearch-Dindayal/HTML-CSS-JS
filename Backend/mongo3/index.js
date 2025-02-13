@@ -6,7 +6,8 @@ const Chat = require("./models/chat.js");
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
-app.use(express.static(path.join(__dirname,"public")));
+app.use(express.static(path.join(__dirname, "public")));
+app.use(express.urlencoded({ extended: true }));
 
 // MongoDB Connection
 async function main() {
@@ -20,25 +21,44 @@ async function main() {
 
 main().catch(err => console.error("MongoDB connection error:", err));
 
-// Roots Routes
+// Root Route
 app.get("/", (req, res) => {
     res.send("Root is working");
 });
 
-//Index roots
+// Index (chat) Route
 app.get("/chats", async (req, res) => {
     try {
-        let chats = await Chat.find({});  // Await the query execution
-        res.render("index.ejs",{chats});  // Send the chats as a response
+        let chats = await Chat.find({});
+        res.render("index.ejs", { chats });
     } catch (error) {
         console.error(error);
         res.status(500).send("Internal Server Error");
     }
 });
 
-//new chat root
+// New Chat Route
 app.get("/chats/new", (req, res) => {
-    res.send("Root is working");
+    res.render("new.ejs");
+});
+
+// Create Chat Route (POST)
+app.post("/chats", async (req, res) => {
+    let { from, to, msg } = req.body;
+    let newChat = new Chat({
+        from: from,
+        to: to,
+        msg: msg,
+        created_at: new Date(),
+    });
+
+    try {
+        await newChat.save();
+        res.redirect("/chats");
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Internal Server Error");
+    }
 });
 
 // Start Server
