@@ -19,9 +19,14 @@
             </div>
             <hr>
             <p><b>Time: </b><%=chat.created_at.toString().split(" ")[4]%>&emsp;<b>Date: </b><%=chat.created_at.toString().split(" ").slice(0,4).join("-")%></p>
-            <form method="GET" action="/chats/<%=chat.id%>/edit">
-                <button>Edit</button>
+            <div class="form-box">
+                <form method="GET" action="/chats/<%=chat.id%>/edit">
+                <button class="form-button-style">Edit</button>
             </form>
+            <form action="/chats/<%= chat._id %>?_method=DELETE" method="POST">
+                <button class="form-button-style"type="submit">Delete</button>
+            </form>
+            </div>
         </div>
     <% } %>   
 </body>

@@ -92,6 +92,25 @@ app.put("/chats/:id", async (req, res) => {
     }
 });
 
+//Destroy route
+app.delete("/chats/:id", async (req, res) => {
+    let { id } = req.params;
+    console.log("Deleting chat with ID:", id); // Debugging log
+    try {
+        let DeletedChat = await Chat.findByIdAndDelete(id);
+        if (!DeletedChat) {
+            console.log("Chat not found"); // Debugging log
+            return res.status(404).send("Chat not found");
+        }
+        console.log("Deleted Chat:", DeletedChat); // Debugging log
+        res.redirect("/chats");
+    } catch (error) {
+        console.error("Error deleting chat:", error); // Debugging log
+        res.status(500).send("Internal Server Error");
+    }
+});
+
+
 // Start Server
 const PORT = 8080;
 app.listen(PORT, () => {

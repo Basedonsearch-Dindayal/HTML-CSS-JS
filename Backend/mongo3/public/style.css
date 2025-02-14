@@ -9,6 +9,13 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
+.formbox{
+    display: flex;
+    gap: 15px;
+}
+
+
+
 .chat p {
     margin: 5px 0;
     font-size: 14px;
@@ -63,4 +70,34 @@ h1{
        0 0 18px #fff, 4px 0 18px 
        #f3bad6, -4px 0 18px #0ff; 
     text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff, 0 0 40px #0ff, 0 0 80px #0ff, 0 0 90px #0ff, 0 0 100px #0ff, 0 0 150px #0ff;
+}
+
+.form-box{
+    display: flex;
+    gap: 15px;
+}
+
+.form-button-style{
+    
+    display: inline-block;
+    outline: none;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 0 12px;
+    line-height: 20px;
+    height: 30px;
+    max-height: 30px;
+    background: none;
+    font-weight: 700;
+    border: 0;
+    border-radius: 0;
+    color: #D92736;
+    transition-timing-function: ease-in-out;
+    transition-property: background;
+    transition-duration: 150ms;
+    box-shadow: none;
+    :hover {
+        background: #F7F9FD;
+    }
+
 }

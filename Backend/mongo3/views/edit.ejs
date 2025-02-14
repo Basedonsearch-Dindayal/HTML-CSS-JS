@@ -4,6 +4,92 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit chat</title>
+    <style>
+        /* General body styling */
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        /* Styling for the paragraphs */
+        p {
+            font-size: 1.2em;
+            margin: 10px 0;
+            color: #555;
+        }
+
+        /* Styling for the bold text */
+        b {
+            color: #ff6f61;
+        }
+
+        /* Styling for the form */
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        /* Styling for the textarea */
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #ff6f61;
+            border-radius: 10px;
+            font-size: 1em;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            resize: vertical;
+            margin-bottom: 15px;
+            background-color: #fefefe;
+        }
+
+        /* Styling for the button */
+        button {
+            background-color: #ff6f61;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #ff4a3d;
+        }
+
+        /* Add a cute little animation to the button */
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-5px);
+            }
+        }
+
+        button:hover {
+            animation: bounce 0.5s;
+        }
+
+        /* Add a cute border to the form */
+        form {
+            border: 3px dashed #ff6f61;
+        }
+    </style>
 </head>
 <body>
     <p>Edit your chat: <%= chat._id %></p>
