@@ -17,6 +17,11 @@
             <div class="msg">   
                 <p><b>Msg:</b> <%=chat.msg%> </p>
             </div>
+            <hr>
+            <p><b>Time: </b><%=chat.created_at.toString().split(" ")[4]%>&emsp;<b>Date: </b><%=chat.created_at.toString().split(" ").slice(0,4).join("-")%></p>
+            <form method="GET" action="/chats/<%=chat.id%>/edit">
+                <button>Edit</button>
+            </form>
         </div>
     <% } %>   
 </body>

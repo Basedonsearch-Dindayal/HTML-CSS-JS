@@ -3,11 +3,13 @@ const app = express();
 const mongoose = require("mongoose");
 const path = require("path");
 const Chat = require("./models/chat.js");
+const methodOverride = require("method-override");
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
+app.use(methodOverride("_method"));
 
 // MongoDB Connection
 async function main() {
@@ -54,6 +56,35 @@ app.post("/chats", async (req, res) => {
 
     try {
         await newChat.save();
+        res.redirect("/chats");
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Internal Server Error");
+    }
+});
+
+// EDIT Chat Route
+app.get("/chats/:id/edit", async (req, res) => {
+    let { id } = req.params;
+    try {
+        let chat = await Chat.findById(id);
+        res.render("edit.ejs", { chat });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Internal Server Error");
+    }
+});
+
+// Update route
+app.put("/chats/:id", async (req, res) => {
+    let { id } = req.params;
+    let { msg: newMsg } = req.body;
+    try {
+        let updatedChat = await Chat.findByIdAndUpdate(
+            id,
+            { msg: newMsg },
+            { runValidators: true, new: true }
+        );
         res.redirect("/chats");
     } catch (error) {
         console.error(error);
