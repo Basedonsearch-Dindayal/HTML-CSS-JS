@@ -5,98 +5,86 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit chat</title>
     <style>
-        /* General body styling */
-        body {
-            font-family: 'Comic Sans MS', cursive, sans-serif;
-            background-color: #f9f9f9;
-            color: #333;
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-        }
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
-        /* Styling for the paragraphs */
-        p {
-            font-size: 1.2em;
-            margin: 10px 0;
-            color: #555;
-        }
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #fff5cc; /* Soft Pink */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
 
-        /* Styling for the bold text */
-        b {
-            color: #ff6f61;
-        }
+.chat-container {
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0px 5px 15px rgba(106, 13, 173, 0.3); /* Royal Purple shadow */
+    width: 380px;
+    text-align: center;
+    border: 3px solid #6a0dad; /* Deep Royal Purple */
+}
 
-        /* Styling for the form */
-        form {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 500px;
-            text-align: center;
-        }
+p {
+    color: #6a0dad;
+    font-size: 16px;
+    font-weight: 600;
+    background-color: #e6e6fa ;
+}
 
-        /* Styling for the textarea */
-        textarea {
-            width: 100%;
-            padding: 10px;
-            border: 2px solid #ff6f61;
-            border-radius: 10px;
-            font-size: 1em;
-            font-family: 'Comic Sans MS', cursive, sans-serif;
-            resize: vertical;
-            margin-bottom: 15px;
-            background-color: #fefefe;
-        }
+b {
+    color: #e42259; /* Elegant Gold */
+}
 
-        /* Styling for the button */
-        button {
-            background-color: #ff6f61;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 10px;
-            font-size: 1em;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
+textarea {
+    width: 90%;
+    height: 120px;
+    border: 2px solid #ff69b4; /* Rich Pink */
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 14px;
+    background: #fff0f6; /* Light Pink */
+    resize: none;
+    outline: none;
+    transition: 0.3s ease-in-out;
+}
 
-        button:hover {
-            background-color: #ff4a3d;
-        }
+textarea:focus {
+    border-color: #6a0dad; /* Royal Purple */
+    background: #f8e6ff; /* Softer lavender */
+}
 
-        /* Add a cute little animation to the button */
-        @keyframes bounce {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-5px);
-            }
-        }
+button {
+    background: linear-gradient(to right, #6a0dad, #ff69b4);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: 0.3s;
+    box-shadow: 0px 4px 10px rgba(106, 13, 173, 0.3);
+}
 
-        button:hover {
-            animation: bounce 0.5s;
-        }
+button:hover {
+    background: linear-gradient(to right, #ff69b4, #6a0dad);
+    transform: scale(1.05);
+}
 
-        /* Add a cute border to the form */
-        form {
-            border: 3px dashed #ff6f61;
-        }
     </style>
 </head>
 <body>
-    <p>Edit your chat: <%= chat._id %></p>
-    <p>This Chat was sent from <b><%= chat.from %></b> to <b><%= chat.to %></b></p>
-    <form method="POST" action="/chats/<%= chat._id %>?_method=PUT">
-        <textarea name="msg" rows="10" cols="50"><%= chat.msg %></textarea>
-        <button type="submit">Edit</button>
-    </form>
+    <div class="chat-container">
+        <p>Edit your chat: <%= chat._id %></p>
+        <p>This Chat was sent from <b><%= chat.from %></b> to <b><%= chat.to %></b></p>
+        <form method="POST" action="/chats/<%= chat._id %>?_method=PUT">
+            <textarea name="msg" rows="10" cols="50"><%= chat.msg %></textarea>
+            <button type="submit">Edit</button>
+        </form>
+    </div>
+    
 </body>
 </html>

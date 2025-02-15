@@ -25,7 +25,7 @@ main().catch(err => console.error("MongoDB connection error:", err));
 
 // Root Route
 app.get("/", (req, res) => {
-    res.send("Root is working");
+    res.send("Local host is working fine use go to link:http://localhost:8080/chats");
 });
 
 // Index (chat) Route

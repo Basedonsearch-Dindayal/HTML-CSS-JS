@@ -1,3 +1,5 @@
+//Only run this file if you want sample data; otherwise, it is of no use.
+
 const mongoose = require("mongoose");
 const Chat = require("./models/chat.js");
 
