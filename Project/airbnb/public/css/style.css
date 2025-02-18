@@ -1,3 +1,8 @@
+body{
+    font-optical-sizing: auto;
+    font-family: "Plus Jakarta Sans", serif !important;
+    font-style: normal;
+}
 /* navbar */
 .navbar{
     height: 5rem;
@@ -10,5 +15,62 @@
 }
 
 .nav-link{
-    color: #222 !important;
+    color: #222222 !important;
+}
+
+/* footers */
+.f-info-links a{
+    text-decoration: none;
+    color: #222222;
+}
+.f-info-links a:hover{
+    text-decoration: underline;
+}
+
+.f-info-links, .f-info-socials, .f-info-brand{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.f-info-socials i{
+margin-right: 1rem;
+font-size: 1.2rems;
+}
+
+
+.f-info{
+    height: 8rem;
+    background-color:#ebebeb ;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items:space-evenly;
+    text-align: center;
+}
+
+/* cards */
+.cards{
+    border: none;
+    margin-bottom: 2rem;
+}
+
+.card-img-top{
+    border-radius: 1rem !important;
+    width: 100% !important;
+    object-fit: cover !important;
+}
+
+.card-padding{
+    padding: 0 !important;
+}
+
+.card-text p{
+    font-weight:400 !important;
+}
+
+.listing-link{
+    text-decoration: none;
 }
