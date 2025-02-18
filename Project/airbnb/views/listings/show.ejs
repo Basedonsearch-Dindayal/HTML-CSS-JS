@@ -6,7 +6,7 @@
     <title>Waterbnb</title>
 </head>
 <body>
-    <h3>Lisitng details:</h3>
+    <h3>Listing details:</h3>
     <ul>
         <li><%=listing.title%></li>
         <li><%=listing.description%></li>
@@ -14,5 +14,10 @@
         <li><%=listing.location%></li>
         <li><%=listing.country%></li>
     </ul>
+    <a href="/listings/<%=listing._id%>/edit">Edit this listing</a>
+    <br><br>
+    <form method="POST" action="/listings/<%=listing._id%>?_method=DELETE" onsubmit="return confirm('Are you sure you want to delete this listing?');">
+        <button type="submit">Delete this listing</button>
+    </form>
 </body>
 </html>
