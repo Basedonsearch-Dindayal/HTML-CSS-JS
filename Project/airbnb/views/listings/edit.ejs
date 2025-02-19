@@ -16,8 +16,17 @@
 
         <div class="mb-3">
             <label for="image" class="form-label">Image</label>
-            <input name="listing[image]" value="<%=listing.image.url%>" type="text" class="form-control">
-        </div>
+            <input name="listing[image][url]" value="<%= listing.image.url %>" type="text" class="form-control">
+            <br>
+            <!-- mini preview image -->
+            <% if (listing.image && listing.image.url) { %>
+                <div class="image-container mt-2 position-relative">
+                    <img src="<%= listing.image.url %>" alt="Listing Image" class="img-fluid" style="max-width: 200px; max-height: 200px;">
+                    <div class="image-overlay">Preview</div>
+                </div>
+            <% } %>            
+        </div>        
+        
         <div class="row">
             <div class="mb-3 col-md-4">
                 <label for="price" class="form-label">Price</label>
@@ -33,7 +42,7 @@
             <label for="location" class="form-label">Location</label>
             <input name="listing[location]" value="<%=listing.location%>" type="text" class="form-control">
         </div>
-        <button class="btn btn-dark edit-btn mt-3">Edit</button>
+        <button type="submit" class="btn btn-dark edit-btn mt-3">Edit</button>
     </form>
 </div>
 </div>

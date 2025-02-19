@@ -90,21 +90,46 @@ font-size: 1.2rems;
     opacity: 0.2;
     background-color: white;
 }
-
 /* new page  */
 .add-btn{
    background-color: #fe424d !important;
    border:none !important;
 }
 
-/* edit button */
+/* edit page  */
 .edit-btn{
     background-color: #fe424d !important;
    border:none !important;
 }
+.image-container {
+    display: inline-block;
+    position: relative;
+}
+
+.image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: bold;
+    opacity: 0; /* Hidden by default */
+    transition: opacity 0.3s ease-in-out;
+}
+
+.image-container:hover .image-overlay {
+    opacity: 1; /* Show on hover */
+}
+
 
 /* show page */
 .show-img{
-    height: 30vh;
+    height: 50vh;
     
 }
