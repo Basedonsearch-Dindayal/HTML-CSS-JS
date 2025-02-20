@@ -95,6 +95,12 @@ font-size: 1.2rems;
    background-color: #fe424d !important;
    border:none !important;
 }
+ input::placeholder{
+    opacity: 0.4 !important;
+ }
+ textarea::placeholder{
+    opacity: 0.4 !important;
+ }
 
 /* edit page  */
 .edit-btn{
