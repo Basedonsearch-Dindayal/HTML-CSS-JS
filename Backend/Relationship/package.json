@@ -1,0 +1,14 @@
+{
+  "name": "relationship",
+  "version": "1.0.0",
+  "main": "user.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Dino-king",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "mongoose": "^8.10.1"
+  }
+}
