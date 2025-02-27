@@ -1,13 +1,11 @@
 <% layout("/layouts/boilerplate")%>
-<body>
     <div class="container mt-">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <h3 class="text-center mb-4">Listing Details</h3>
+                <h3 class="text-center mb-4"><%= listing.title %></h3>
                 <div class="card shadow-sm">
                     <img src="<%= listing.image.url%>" class="card-img-top show-img" alt="Listing Image">
                     <div class="card-body">
-                        <h5 class="card-title"><b><%= listing.title %></b></h5>
                         <p class="card-text">
                             <%= listing.description %> <br>
                             <span class="text-muted">Price:</span> &#8377;<%= listing.price.toLocaleString("en-IN") %> <br>
@@ -25,4 +23,23 @@
             </div>
         </div>
     </div>
-</body>
+    <hr />
+    <!-- comment area started here -->
+    <div class="container mt-">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <h4>Leave a Review</h4>
+                <form action="/listings/<%= listing.id %>/reviews" method="POST" class="mb-3 mt-3 need-validation" novalidate>
+                    <div class="mb-3 mt-3">
+                        <label for="rating" class="form-label">Rating</label>
+                        <input type="range" class="form-range" min="1" max="5" id="rating" name="review[rating]">
+                    </div>
+                    <div class="mb-3 mt-3">
+                        <label for="comment" class="form-label">Comment:</label>
+                        <textarea name="review[comment]" id="comment" cols="30" rows="5" class="form-control" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-outline-dark">submit</button>
+                </form>
+            </div>    
+        </div>
+    </div>        
