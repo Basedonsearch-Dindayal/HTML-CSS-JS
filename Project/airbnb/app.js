@@ -5,14 +5,37 @@ const path = require("path");
 const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
 const ExpressError = require("./utils/ExpressError.js")
+const wrapAsync = require("./utils/wrapasync.js");
+const{listingSchema} = require("./schema.js");
+const{reviewSchema} = require("./schema.js")
+const Listing = require("./models/listing.js");
+const Review = require("./models/review.js");
 
-const listings = require("./routes/listing.js")
-const reviews = require("./routes/review.js")
+const validateListing = (req,res,next) =>{
+    let {error} = listingSchema.validate(req.body);
+    if(error){
+        let errMsg = error.details.map((el) => el.message).join(",");
+        throw new ExpressError(400,errMsg);
+    } else{
+        next();
+    }
+};
+
+const validateReview = (req, res, next) => {
+    let { error } = reviewSchema.validate(req.body);
+    if (error) {
+        let errMsg = error.details.map((el) => el.message).join(",");
+        throw new ExpressError(400, errMsg);
+    } else {
+        next();
+    }
+};
 
 app.engine('ejs', ejsMate);
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.urlencoded({extended:true}));
+app.use(express.json());
 app.use(methodOverride("_method"));
 app.use(express.static(path.join(__dirname,"public")));
 
@@ -33,9 +56,80 @@ app.get("/", (req, res) => {
     res.send("This is root");
 });
 
-//routes folder
-app.use("/listings",listings);
-app.use("/listings/:id/reviews",reviews);
+// All Listings Route
+app.get("/listings", wrapAsync(async (req, res) => {
+    const allListings = await Listing.find({});
+    res.render("listings/index.ejs", { allListings });
+}));
+
+//new route
+app.get("/listings/new",(req,res)=>{
+    res.render("listings/new.ejs");
+});
+
+// All Show Route
+app.get("/listings/:id",wrapAsync( async (req, res) => {
+    let {id} = req.params;
+    const listing = await Listing.findById(id).populate("reviews");
+    res.render("listings/show.ejs",{listing});
+}));
+
+//Create route
+app.post("/listings",validateListing,wrapAsync(async(req,res)=>{
+    const newListing = new Listing(req.body.listing);
+    await newListing.save();
+    res.redirect("/listings");
+}));
+
+//edit route
+app.get("/listings/:id/edit",wrapAsync(async(req,res)=>{
+    let {id} = req.params;
+    const listing = await Listing.findById(id);
+    res.render("listings/edit.ejs",{listing})
+}));
+
+//update route
+app.put("/listings/:id/",validateListing,wrapAsync(async(req,res)=>{
+    let {id} = req.params;
+    await Listing.findByIdAndUpdate(id,{...req.body.listing});
+    res.redirect(`/listings/${id}`);
+}));
+
+//Delete route
+app.delete("/listings/:id",wrapAsync(async(req,res)=>{
+    let{id} =req.params;
+    let deletedListing = await Listing.findByIdAndDelete(id);
+    res.redirect("/listings");
+    console.log(deletedListing);
+}));
+
+//Reviews post route
+app.post("/listings/:id/reviews/", validateReview, wrapAsync(async (req, res) => {
+    let listing = await Listing.findById(req.params.id);
+    let newReview = new Review(req.body.review);
+
+    listing.reviews.push(newReview);
+
+    await newReview.save();
+    await listing.save();
+    
+    res.redirect(`/listings/${listing._id}`);
+}));
+
+//delete review route
+app.delete("/listings/:id/reviews/:reviewId", wrapAsync(async (req, res) => { 
+    const { id, reviewId } = req.params;
+
+    let listing = await Listing.findById(id);
+    if (!listing) {
+        throw new ExpressError(404, "Listing not found");
+    }
+
+    await Listing.findByIdAndUpdate(id, { $pull: { reviews: reviewId } });
+    await Review.findByIdAndDelete(reviewId);
+
+    res.redirect(`/listings/${id}`);
+}));
 
 
 app.all("*",(req,res,next)=>{
