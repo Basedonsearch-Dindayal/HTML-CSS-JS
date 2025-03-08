@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const Review = require("./review.js");
 
-const DEFAULT_IMAGE_URL = "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Image_not_available.png/800px-Image_not_available.png";
+const DEFAULT_IMAGE_URL = "https://t4.ftcdn.net/jpg/02/51/95/53/360_F_251955356_FAQH0U1y1TZw3ZcdPGybwUkH90a3VAhb.jpg";
 
 const listingSchema = new Schema({
   title: { type: String, required: true, trim: true },
