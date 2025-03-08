@@ -2,24 +2,35 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const Review = require("./review.js");
 
+const DEFAULT_IMAGE_URL = "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Image_not_available.png/800px-Image_not_available.png";
+
 const listingSchema = new Schema({
-  title: { type: String, required: true },
-  description: String,
+  title: { type: String, required: true, trim: true },
+  description: { type: String, required: true, trim: true },
   image: {
-    url: { type: String , default:"https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Image_not_available.png/800px-Image_not_available.png"}, 
-    filename: { type: String, default:"default-image"}
+    url: { type: String, trim: true },
+    filename: { type: String, default: "default-image", trim: true }
   },
-  price: Number,
-  location: String,
-  country: String,
+  price: { type: Number, required: true, min: 0 },
+  location: { type: String, required: true, trim: true },
+  country: { type: String, required: true, trim: true },
   reviews: [{
     type: Schema.Types.ObjectId,
     ref: "Review"
   }]
 });
 
-listingSchema.post("findOneAndDelete", async (listing) => {
-  if (listing) {
+// Middleware to set default image if none is provided
+listingSchema.pre("save", function (next) {
+  if (!this.image || !this.image.url) {
+    this.image = { url: DEFAULT_IMAGE_URL, filename: "default-image" };
+  }
+  next();
+});
+
+// Middleware to delete associated reviews when a listing is deleted
+listingSchema.post("findOneAndDelete", async function (listing) {
+  if (listing && listing.reviews.length) {
     await Review.deleteMany({ _id: { $in: listing.reviews } });
   }
 });
