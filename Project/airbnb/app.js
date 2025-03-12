@@ -11,6 +11,7 @@ const{reviewSchema} = require("./schema.js")
 const Listing = require("./models/listing.js");
 const Review = require("./models/review.js");
 
+//error validation for listing
 const validateListing = (req,res,next) =>{
     let {error} = listingSchema.validate(req.body);
     if(error){
@@ -21,6 +22,7 @@ const validateListing = (req,res,next) =>{
     }
 };
 
+//error validation for reviews
 const validateReview = (req, res, next) => {
     let { error } = reviewSchema.validate(req.body);
     if (error) {
