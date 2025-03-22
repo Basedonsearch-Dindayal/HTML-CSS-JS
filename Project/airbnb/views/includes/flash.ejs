@@ -1,0 +1,14 @@
+<% if(success && success.length){ %>
+    <div class="alert alert-success" role="alert" id="successMessage">
+        <%= success %>    
+    </div>
+    <script>
+      setTimeout(function() {
+        var alertBox = document.getElementById("successMessage");
+        if (alertBox) {
+          alertBox.style.display = "none";
+        }
+      }, 5000);
+    </script>
+    <% } %>
+    
