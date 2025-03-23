@@ -8,10 +8,14 @@ const ExpressError = require("./utils/ExpressError.js");
 const wrapAsync = require("./utils/wrapasync.js");
 const session = require("express-session");
 const flash = require("connect-flash");
+const passport = require("passport");
+const LocalStrategy = require("passport-local")
+const User = require("./models/user.js")
 
 // Import Routes
-const listingRoutes = require("./routes/listings");
-const reviewRoutes = require("./routes/reviews");
+const listingRouter = require("./routes/listings");
+const reviewRouter = require("./routes/reviews");
+const userRouter = require("./routes/user.js");
 
 // MongoDB Connection
 async function main() {
@@ -49,14 +53,33 @@ app.get("/", (req, res) => {
 app.use(session(sessionOptions));
 app.use(flash());
 
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()))
+
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
 app.use((req,res,next)=>{
     res.locals.success = req.flash("success");
+    res.locals.error = req.flash("error");
     next();
 })
 
+// app.get("/demouser",async(req,res)=>{
+//     let fakeUser = new User({
+//         email: "student@gmail.com",
+//         username: "delta-student"
+//     })
+
+//     let registeredUser = await User.register(fakeUser,"helloworld");
+//     res.send(registeredUser);
+// })
+
 // Use Routes
-app.use("/listings", listingRoutes);
-app.use("/listings/:id/reviews", reviewRoutes);
+app.use("/listings", listingRouter);
+app.use("/listings/:id/reviews", reviewRouter);
+app.use("/", userRouter);
 
 
 // Catch-all Route for 404 Errors

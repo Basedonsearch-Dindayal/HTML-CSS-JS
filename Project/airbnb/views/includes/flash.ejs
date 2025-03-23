@@ -12,3 +12,17 @@
     </script>
     <% } %>
     
+<% if(error && error.length){ %>
+    <div class="alert alert-danger" role="alert" id="successMessage">
+        <%= error %>    
+    </div>
+    <script>
+      setTimeout(function() {
+        var alertBox = document.getElementById("successMessage");
+        if (alertBox) {
+          alertBox.style.display = "none";
+        }
+      }, 5000);
+    </script>
+    <% } %>
+    
