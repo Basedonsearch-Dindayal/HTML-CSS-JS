@@ -14,10 +14,16 @@ const listingSchema = new Schema({
   price: { type: Number, required: true, min: 0 },
   location: { type: String, required: true, trim: true },
   country: { type: String, required: true, trim: true },
-  reviews: [{
+  reviews: [
+    {
     type: Schema.Types.ObjectId,
-    ref: "Review"
-  }]
+    ref: "Review",
+  }
+],
+owner:{
+  type: Schema.Types.ObjectId,
+  ref: "User",
+},
 });
 
 // Middleware to set default image if none is provided
