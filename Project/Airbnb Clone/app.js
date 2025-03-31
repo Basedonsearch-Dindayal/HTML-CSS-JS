@@ -1,3 +1,10 @@
+if(process.env.NODE_ENV != "production"){
+    require('dotenv').config();
+}
+
+console.log('Cloudinary Config:', process.env.CLOUD_NAME, process.env.CLOUD_API_KEY, process.env.CLOUD_API_SECRET);
+
+
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
