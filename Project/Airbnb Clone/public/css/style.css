@@ -144,3 +144,8 @@ font-size: 1.2rems;
     height: 50vh;
     
 }
+
+/* map */
+#map {
+    height: 50vh
+}
