@@ -76,9 +76,12 @@
                     <div class="col-md-6 col-lg-6 mb-3">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title">@<%= review.author.username%></h5>
+                                <div class="d-flex">
+                                    <h5 class="card-title">@<%= review.author.username%></h5>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <p class="starability-result class-text" data-rating="<%= review.rating %>"></p>
+                                </div>
                                 <p class="card-text"><%= review.comment %></p>
-                                <p class="starability-result class-text" data-rating="<%= review.rating %>"></p>
                             </div>
                             <div class="d-flex justify-content-between align-items-center px-3 mb-3">
                                 <div></div> <!-- Empty div to push button to the right -->

@@ -2,9 +2,6 @@ if(process.env.NODE_ENV != "production"){
     require('dotenv').config();
 }
 
-console.log('Cloudinary Config:', process.env.CLOUD_NAME, process.env.CLOUD_API_KEY, process.env.CLOUD_API_SECRET);
-
-
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
@@ -14,6 +11,7 @@ const ejsMate = require("ejs-mate");
 const ExpressError = require("./utils/ExpressError.js");
 const wrapAsync = require("./utils/wrapasync.js");
 const session = require("express-session");
+const MongoStore = require('connect-mongo');
 const flash = require("connect-flash");
 const passport = require("passport");
 const LocalStrategy = require("passport-local")
@@ -25,8 +23,9 @@ const reviewRouter = require("./routes/reviews");
 const userRouter = require("./routes/user.js");
 
 // MongoDB Connection
+const dbUrl = process.env.ATLASDB_URL;
 async function main() {
-    await mongoose.connect("mongodb://127.0.0.1:27017/Wonderlust");
+    await mongoose.connect(dbUrl);
 }
 
 main()
@@ -41,8 +40,21 @@ app.use(express.json());
 app.use(methodOverride("_method"));
 app.use(express.static(path.join(__dirname, "public")));
 
-sessionOptions = {
-    secret : "mysupersecretcode",
+const store = MongoStore.create({
+    mongoUrl: dbUrl,
+    crypto:{
+        secret: process.env.SECRET,
+    },
+    touchAfter: 24*3600,
+});
+
+store.on("error",()=>{
+    console.log("ERROR IN MONGO SESSION STORE",err);
+})
+
+const sessionOptions = {
+    store,
+    secret : process.env.SECRET,
     resave : false,
     saveUninitialized: true,
     cookie: {
@@ -51,11 +63,6 @@ sessionOptions = {
         httpOnly : true,
     },
 };
-
-// Root Route
-// app.get("/", (req, res) => {
-//     res.send("This is root");
-// });
 
 app.use(session(sessionOptions));
 app.use(flash());
@@ -73,16 +80,6 @@ app.use((req,res,next)=>{
     res.locals.currUser = req.user;
     next();
 })
-
-// app.get("/demouser",async(req,res)=>{
-//     let fakeUser = new User({
-//         email: "student@gmail.com",
-//         username: "delta-student"
-//     })
-
-//     let registeredUser = await User.register(fakeUser,"helloworld");
-//     res.send(registeredUser);
-// })
 
 // Use Routes
 app.use("/listings", listingRouter);
